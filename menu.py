@@ -1,12 +1,12 @@
 def menu():
     print("\n===== MENÚ PRINCIPAL =====")
-    print("1. Agregar una nota")
-    print("2. Mostrar todas las notas")
-    print("3. Calcular promedio mayor y menor")
+    print("1. Agregar una calificación")
+    print("2. Mostrar todas las calificaciones")
+    print("3. Calcular promedio, mayor y menor")
     print("4. Terminar programa")
 
-# Lista vacía
-elementos = []
+# Lista para guardar las calificaciones
+calificaciones = []
 
 # Simulación de estructura do-while
 while True:
@@ -14,32 +14,39 @@ while True:
     opcion = input("Elige una opción (1-4): ")
 
     if opcion == "1":
-        nuevo = input("Ingresa una nota: ")
-        elementos.append(nuevo)
-        print(f"'{nuevo}' ha sido agregado.")
+        try:
+            cal = float(input("Ingresa una calificación (0-100): "))
+            if 0 <= cal <= 100:
+                calificaciones.append(cal)
+                print(f"Calificación {cal} agregada correctamente.")
+            else:
+                print("La calificación debe estar entre 0 y 100.")
+        except ValueError:
+            print("Debes ingresar un número válido.")
 
     elif opcion == "2":
-        if elementos:
-            print("\nNotas actuales:")
-            for i, e in enumerate(elementos, start=1):
-                print(f"{i}. {e}")
+        if calificaciones:
+            print("\nCalificaciones registradas:")
+            for i, c in enumerate(calificaciones, start=1):
+                print(f"{i}. {c}")
         else:
-            print("\nLa lista está vacía.")
+            print("No hay calificaciones registradas aún.")
 
     elif opcion == "3":
-        if elementos:
-            eliminar = input("Ingresa la nota que deseas eliminar: ")
-            if eliminar in elementos:
-                elementos.remove(eliminar)
-                print(f"'{eliminar}' ha sido eliminado.")
-            else:
-                print(f"'{eliminar}' no está en la lista.")
+        if calificaciones:
+            promedio = sum(calificaciones) / len(calificaciones)
+            mayor = max(calificaciones)
+            menor = min(calificaciones)
+            print("\nResultados:")
+            print(f"Promedio: {promedio:.2f}")
+            print(f"Calificación más alta: {mayor}")
+            print(f"Calificación más baja: {menor}")
         else:
-            print("\nLa lista está vacía. No hay nada que eliminar.")
+            print("No hay calificaciones para calcular estadísticas.")
 
     elif opcion == "4":
-        print("Saliendo del programa... ¡Hasta luego!")
-        break  # Condición de salida: simula el 'while' del do-while
+        print("Programa terminado. ¡Hasta luego!")
+        break  # Sale del bucle (simulando el 'while' del do-while)
 
     else:
         print("Opción no válida. Intenta de nuevo.")
