@@ -146,4 +146,4 @@ elif opcion == 6:
         print("ℹ️ No hay notas para eliminar.")
 
 else:
-    print("🛑 Opción fuera del rango (1-6). Intente nuevament
+    print("🛑 Opción fuera del rango (1-6). Intente nuevamente")
