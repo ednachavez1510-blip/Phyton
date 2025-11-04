@@ -73,7 +73,9 @@ while True:
     # Estructura condicional (if/elif/else) para ejecutar la acción según la opción
 
     if opcion == 1:
+        
     # --- Agregar nota ---
+    
     try:
         nota = float(input("Ingrese la nota a agregar: "))
         notas.append(nota)
